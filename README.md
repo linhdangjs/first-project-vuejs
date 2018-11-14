@@ -1,4 +1,5 @@
 # first-project-vuejs
 vuejs
 
-mini project - Attack Monster :D
+Learn Vue 2.0 by simple project
+Mini project - Attack Monster :D

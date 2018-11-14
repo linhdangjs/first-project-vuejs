@@ -17,11 +17,15 @@ new Vue ({
             if(this.checkWin()) {
                 return;
             }
-            this.playerHealth -= this.calculateDame(5, 12);
-            this.checkWin();
+            this.monsterAttack();
         },
         specialAttack: function() {
+            this.monsterHealth -= this.calculateDame(10, 20);
 
+            if(this.checkWin()) {
+                return;
+            }
+            this.monsterAttack();
         },
         heal: function() {
 
@@ -31,6 +35,10 @@ new Vue ({
         },
         calculateDame: function(min, max) {
             return Math.max(Math.floor(Math.random() * max) + 1, min);
+        },
+        monsterAttack: function() {
+            this.playerHealth -= this.calculateDame(5, 12);
+            this.checkWin();
         },
         checkWin: function() {
             if(this.monsterHealth <= 0) {

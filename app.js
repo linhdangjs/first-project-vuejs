@@ -35,8 +35,8 @@ new Vue ({
                 var damage = this.calculateDame(15, 25);
                 this.monsterHealth -= damage;
                 this.turns.unshift({
-                    isPlayer: true, 
-                    text: 'Player hits monster for ' + damage
+                    isOP: true, 
+                    text: 'Player Use Ultimate for ' + damage
                 });
     
                 if(this.checkWin()) {

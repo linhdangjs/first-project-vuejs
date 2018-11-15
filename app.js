@@ -3,7 +3,8 @@ new Vue ({
     data: {
         playerHealth: 100,
         monsterHealth: 100,
-        gameIsRunning: false
+        gameIsRunning: false,
+        turns: []
     },
     methods: {
         startGame: function() {
@@ -12,15 +13,18 @@ new Vue ({
             this.monsterHealth = 100;
         },
         attack: function() {
-            this.monsterHealth -= this.calculateDame(3, 10);
-
+            var damage = this.calculateDame(3, 10);
+            this.monsterHealth -= damage;
+            this.turns.unshift({'isPlayer': true, 'text': 'Player hits monster for ' + damage});
             if(this.checkWin()) {
                 return;
             }
             this.monsterAttack();
         },
         specialAttack: function() {
-            this.monsterHealth -= this.calculateDame(10, 20);
+            var damage = this.calculateDame(10, 20);
+            this.monsterHealth -= damage;
+            this.turns.unshift({'isPlayer': true, 'text': 'Player hits monster for ' + damage});
 
             if(this.checkWin()) {
                 return;
@@ -42,7 +46,9 @@ new Vue ({
             return Math.max(Math.floor(Math.random() * max) + 1, min);
         },
         monsterAttack: function() {
-            this.playerHealth -= this.calculateDame(5, 12);
+            var damage = this.calculateDame(5, 12);
+            this.playerHealth -= damage;
+            this.turns.unshift({'isPlayer': false, 'text': 'Monster hits player for ' + damage});
             this.checkWin();
         },
         checkWin: function() {

@@ -10,6 +10,14 @@
     transition: width 500ms;
 }
 
+.angrybar {
+    width: 80%;
+    height: 40px;
+    background-color: #eee;
+    margin: auto;
+    transition: width 500ms;
+}
+
 .controls, .log {
     margin-top: 30px;
     text-align: center;
@@ -43,6 +51,11 @@
 .log ul .monster-turn {
     color: red;
     background-color: #ffc0c1;
+}
+
+.log ul .warning-turn {
+    color: black;
+    background-color: orange;
 }
 
 button {
@@ -91,4 +104,21 @@ button {
 
 #give-up:hover {
     background-color: #c7c7c7;
+}
+
+/*  flash animation - angry bar */
+.flashAngryBar{
+    color:#f2f;
+      -webkit-animation: flash linear 1s infinite;
+      animation: flash linear 1s infinite;
+  }
+@-webkit-keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
+}
+@keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
 }

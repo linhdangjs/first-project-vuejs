@@ -18,6 +18,15 @@
                     {{ playerHealth }}
                 </div>
             </div>
+            <hr>
+            <div class="angrybar">
+                <div    class="angrybar text-center" 
+                        :class="{flashAngryBar : isFullAngry}"
+                        style="background-color: red; margin: 0px; color: greenyellow;"
+                        :style="{width: playerAngry + '%'}">
+                    {{ playerAngry }}
+                </div>
+            </div>
         </div>
         <div class="small-6 columns">
             <h1 class="text-center">MONSTER</h1>
@@ -39,7 +48,9 @@
     <section class="row controls" v-else>
         <div class="small-12 columns">
             <button id="attack" @click="attack">ATTACK</button>
-            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+            <button id="special-attack" 
+                    @click="specialAttack"
+                    :class="{flashAngryBar : isFullAngry}">SPECIAL ATTACK</button>
             <button id="heal" @click="heal">HEAL</button>
             <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
@@ -48,7 +59,7 @@
         <div class="small-12 columns">
             <ul>
                 <li v-for="turn in turns"
-                    :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}"> 
+                    :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer, 'warning-turn': turn.isWarning}"> 
                     {{ turn.text }}
                 </li>
             </ul>

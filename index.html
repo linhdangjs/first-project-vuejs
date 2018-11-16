@@ -21,7 +21,8 @@
                      src="images/you.png" alt="avatar-you">
             </div>
            
-            <div class="health-bar">
+            <div class="health-bar"> 
+                    
                 <div class="health-bar-glass">
                         <div  class="health-bar-fluid text-center" 
                         :class="{'flashOP low-hp-bar' : isPlayerLowHP}"
@@ -93,6 +94,7 @@
                              'monster-turn': !turn.isPlayer,
                              'warning-turn': turn.isWarning,
                              'op-turn': turn.isOP,
+                             'heal-turn': turn.isHeal,
                              'lucky-turn': turn.isLucky}"> 
                     {{ turn.text }}
                 </li>

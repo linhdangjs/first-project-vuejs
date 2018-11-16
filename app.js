@@ -73,7 +73,7 @@ new Vue ({
                 if(this.playerHealth <= 90) {
                     this.playerHealth += 10;
                     this.turns.unshift({
-                        isPlayer: true, 
+                        isHeal: true, 
                         text : 'Player heals for 10'
                     });
                 } else {
@@ -155,7 +155,7 @@ new Vue ({
             }
         },
         giveSpell: function() {
-            var lucky = Math.max(Math.floor(Math.random() * 6) + 1, 1);
+            var lucky = Math.max(Math.floor(Math.random() * 8) + 1, 1);
             if(lucky == 6) {
                 this.turnHealth++;
                 this.turns.unshift({

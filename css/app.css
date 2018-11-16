@@ -17,6 +17,7 @@ hr {
 }
 
 .image-circle {
+ 
     margin: 0 auto;
     width: 150px;
     height: 150px;
@@ -24,6 +25,10 @@ hr {
     transition: background-color 1s;
     border:  5px solid #efa345ab;
     border-radius: 50%;
+}
+.grayScale {
+    -webkit-filter: grayscale(60%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 .low-hp {
     background-color: #ff18189e !important;
@@ -80,9 +85,25 @@ hr {
     background-color: orange;
 }
 
+.log ul .lucky-turn {
+    color: black;
+    background-color:rgb(32, 32, 228);;
+}
+
 .log ul .op-turn {
     color: white;
     background-color: purple;
+}
+
+.spell {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.spell i {
+    margin: 0 5px;
+    color: greenyellow;
+    word-break : break-all;
 }
 
 button {
@@ -183,6 +204,10 @@ button {
   100% { opacity: 1; }
 }
 
+/* pause flash */
+.pause-flash {
+    animation-play-state: paused !important;
+}
 
 /* custom health bar */
 .health-bar

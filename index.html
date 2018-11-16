@@ -3,6 +3,7 @@
 <head>
     <title>Monster Slayer</title>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
@@ -13,7 +14,10 @@
             <h1 class="text-center">YOU</h1>
             <div class="section-image text-center" style="padding-bottom: 20px">
                 <img class="image-circle" 
-                     :class="{'flashAvatar low-hp' : isPlayerLowHP}"
+                     :class="{
+                              'flashAvatar low-hp' : isPlayerLowHP,
+                              'grayScale pause-flash' : (this.playerHealth <= 0),
+                             }"
                      src="images/you.png" alt="avatar-you">
             </div>
            
@@ -39,12 +43,19 @@
                     </div>
                     </div>
                 </div>
+               <div class="spell">
+                <i v-for="n in turnHealth" class="fa fa-heart"></i>
+               </div>
         </div>
         <div class="small-6 columns text-center">
             <h1 class="text-center">MONSTER</h1>
             <div class="section-image text-center" style="padding-bottom: 20px">
                 <img class="image-circle" 
-                    :class="{'flashAvatar low-hp' : isMonsterLowHP}"
+                    :class="{
+                            'flashAvatar low-hp' : isMonsterLowHP,
+                            'grayScale pause-flash' : (this.monsterHealth <= 0),
+                            }"
+                    
                      src="images/monster.png" alt="avatar-you">
             </div>
             <div class="health-bar">
@@ -78,7 +89,11 @@
         <div class="small-12 columns">
             <ul>
                 <li v-for="turn in turns"
-                    :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer, 'warning-turn': turn.isWarning, 'op-turn': turn.isOP}"> 
+                    :class="{'player-turn': turn.isPlayer,
+                             'monster-turn': !turn.isPlayer,
+                             'warning-turn': turn.isWarning,
+                             'op-turn': turn.isOP,
+                             'lucky-turn': turn.isLucky}"> 
                     {{ turn.text }}
                 </li>
             </ul>

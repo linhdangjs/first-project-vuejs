@@ -5,6 +5,8 @@ new Vue ({
         playerAngry: 0,
         isFullAngry: false,
         monsterHealth: 100,
+        isPlayerLowHP: false,
+        isMonsterLowHP: false,
         gameIsRunning: false,
         turns: []
     },
@@ -15,11 +17,14 @@ new Vue ({
             this.monsterHealth = 100;
             this.playerAngry = 0;
             this.isFullAngry = false;
+            this.isPlayerLowHP = false;
+            this.isMonsterLowHP = false;
             this.turns = [];
         },
         attack: function() {
             var damage = this.calculateDame(3, 10);
             this.monsterHealth -= damage;
+            this.checkMonsterHP();
             this.turns.unshift({
                 isPlayer: true,
                 text: 'Player hits monster for ' + damage
@@ -34,6 +39,7 @@ new Vue ({
                 this.playerAngry = 0;
                 var damage = this.calculateDame(15, 25);
                 this.monsterHealth -= damage;
+                this.checkMonsterHP();
                 this.turns.unshift({
                     isOP: true, 
                     text: 'Player Use Ultimate for ' + damage
@@ -77,6 +83,7 @@ new Vue ({
         monsterAttack: function() {
             var damage = this.calculateDame(5, 12);
             this.playerHealth -= damage;
+            this.checkPlayerHP();
             this.upAngry();
             this.turns.unshift({'isPlayer': false, 'text': 'Monster hits player for ' + damage});
             this.checkWin();
@@ -112,6 +119,21 @@ new Vue ({
                 });
             }
             
-        }
+        }, 
+        checkPlayerHP: function() {
+            if(this.playerHealth <= 20) {
+                this.isPlayerLowHP = true;
+            } else {
+                this.isPlayerLowHP = false;
+            }
+        },
+        checkMonsterHP: function() {
+            if(this.monsterHealth <= 20) {
+                this.isMonsterLowHP = true;
+            } else {
+                this.isMonsterLowHP = false;
+            }
+        },
+
     }
 })

@@ -20,11 +20,18 @@ hr {
     margin: 0 auto;
     width: 150px;
     height: 150px;
-    background-color: #ff18189e;
+    background-color: #28224ec7;
+    transition: background-color 1s;
     border:  5px solid #efa345ab;
     border-radius: 50%;
 }
+.low-hp {
+    background-color: #ff18189e !important;
+}
 
+.low-hp-bar {
+    background-color: #ff0000 !important;
+}
 .angrybar {
     width: 80%;
     height: 40px;
@@ -158,6 +165,25 @@ button {
 	50% { opacity: .5; } 
 	100% { opacity: 1; }
 }
+
+/* flash nhanh */
+.flashOP{
+
+    -webkit-animation: flash linear 1s infinite;
+    animation: flash linear 1s infinite;
+}
+@-webkit-keyframes flash {
+  0% { opacity: 1; } 
+  50% { opacity: .1; } 
+  100% { opacity: 1; }
+}
+@keyframes flash {
+  0% { opacity: 1; } 
+  50% { opacity: .1; } 
+  100% { opacity: 1; }
+}
+
+
 /* custom health bar */
 .health-bar
 {
@@ -219,7 +245,7 @@ button {
 
     width: 60%;
     height: 100%;
-    
+    transition: width .3s;
     background: #d34549;
     
     box-shadow: inset 0 3px 0 -1px #d3aa9a, 

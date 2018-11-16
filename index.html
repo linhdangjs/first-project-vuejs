@@ -12,13 +12,16 @@
         <div class="small-6 columns text-center">
             <h1 class="text-center">YOU</h1>
             <div class="section-image text-center" style="padding-bottom: 20px">
-                <img class="image-circle flashAvatar" src="images/you.png" alt="avatar-you">
+                <img class="image-circle" 
+                     :class="{'flashAvatar low-hp' : isPlayerLowHP}"
+                     src="images/you.png" alt="avatar-you">
             </div>
            
             <div class="health-bar">
                 <div class="health-bar-glass">
                         <div  class="health-bar-fluid text-center" 
-                        style="background-color: green; margin: 0; color: white;"
+                        :class="{'flashOP low-hp-bar' : isPlayerLowHP}"
+                        style="background-color: #00bf00b8; margin: 0; color: white;"
                         :style="{width: playerHealth + '%'}">
                     {{ playerHealth }}
                 </div>
@@ -29,7 +32,8 @@
             <div class="health-bar">
                     <div class="health-bar-glass">
                             <div  class="health-bar-fluid text-center" 
-                            style="background-color: red; margin: 0; color: greenyellow;"
+                            :class="{'flashOP' : isFullAngry}"
+                            style="background-color: #f59300d1; margin: 0; color: greenyellow; transition: width .5s;"
                             :style="{width: playerAngry + '%'}">
                         {{ playerAngry }}
                     </div>
@@ -39,12 +43,15 @@
         <div class="small-6 columns text-center">
             <h1 class="text-center">MONSTER</h1>
             <div class="section-image text-center" style="padding-bottom: 20px">
-                <img class="image-circle flashAvatar" src="images/monster.png" alt="avatar-you">
+                <img class="image-circle" 
+                    :class="{'flashAvatar low-hp' : isMonsterLowHP}"
+                     src="images/monster.png" alt="avatar-you">
             </div>
             <div class="health-bar">
                     <div class="health-bar-glass">
                             <div  class="health-bar-fluid text-center" 
-                            style="background-color: green; margin: 0; color: white;"
+                            :class="{'flashOP low-hp-bar' : isMonsterLowHP}"
+                            style="background-color: #00bf00b8; margin: 0; color: white;"
                             :style="{width: monsterHealth + '%'}">
                         {{ monsterHealth }}
                     </div>
@@ -78,6 +85,9 @@
         </div>
     </section>
 </div>
+<audio controls autoplay loop style="display: none;">
+    <source src="./audio//ConTraiCung-BRayMasew-5731758.mp3" type="audio/ogg">
+  </audio>
 <script src="app.js"></script>
 </body>
 </html>
